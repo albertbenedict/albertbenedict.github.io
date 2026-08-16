@@ -1,3 +1,23 @@
+/* Theme Variables */
+
+:root {
+  --bg-color: #ffffff;
+  --text-color: #141414;
+  --border-color: #141414;
+}
+
+[data-theme="dark"] {
+  --bg-color: #1f1f1f;
+  --text-color: #f2f2f2;
+  --border-color: #f2f2f2;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
 
 /* Icons */
 
@@ -23,6 +43,13 @@ a.icon-link:hover {
   transform: rotate(15deg);
 }
 
+/* Icons are black-stroke SVGs loaded via <img>, so currentColor can't
+   pick up the page theme -- invert them instead when in dark mode */
+[data-theme="dark"] .footer-icon,
+[data-theme="dark"] .right-arrow-icon {
+  filter: invert(1);
+}
+
 
 /* Navbar Styling */
 
@@ -38,7 +65,7 @@ a.icon-link:hover {
 }
 
 .nav-title-link {
-  color: black;
+  color: var(--text-color);
   text-decoration: none;
 }
 
@@ -46,11 +73,17 @@ a.icon-link:hover {
   text-decoration: underline;
 }
 
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
 /* Small devices (portrait tablets and large phones, 800px and below) */
 @media only screen and (max-width: 800px) {
   .navbar {
     padding: 20px 20px;
-    background-color: white
+    background-color: var(--bg-color);
   }
 }
 
@@ -59,9 +92,9 @@ a.icon-link:hover {
 
 a.button {
   padding: 8px 16px;
-  border: 3px solid #141414;
+  border: 3px solid var(--border-color);
   border-radius: 50px;
-  color: black;
+  color: var(--text-color);
   text-decoration: none;
   width: fit-content;
   display: flex;
@@ -73,6 +106,47 @@ a.button:hover {
   text-decoration: underline;
   text-decoration-thickness: 2px;
   cursor: pointer;
+}
+
+
+/* Theme Toggle Switch */
+
+.theme-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.theme-toggle input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-track {
+  width: 42px;
+  height: 22px;
+  border: 2px solid var(--border-color);
+  border-radius: 50px;
+  position: relative;
+  transition: border-color 0.25s ease;
+}
+
+.toggle-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 14px;
+  height: 14px;
+  background-color: var(--text-color);
+  border-radius: 50%;
+  transition: transform 0.25s ease, background-color 0.25s ease;
+}
+
+.theme-toggle input:checked+.toggle-track .toggle-thumb {
+  transform: translateX(20px);
 }
 
 
@@ -90,7 +164,7 @@ a.button:hover {
 /* Link Styling */
 a.no-underline {
   text-decoration: none;
-  color: black
+  color: var(--text-color);
 }
 
 a.no-underline:hover {
