@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <script>
+        (function () {
+            var savedTheme = localStorage.getItem('theme');
+            var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            document.documentElement.setAttribute('data-theme', savedTheme || (prefersDark ? 'dark' : 'light'));
+        })();
+    </script>
+    <link rel="icon" href="../assets/images/favicon.png" />
+    <title>Guess the Song | Albert Benedict</title>
+    <meta name="description" content="Todos + Habits tracker built with vanilla HTML/CSS/JS.">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/typography.css">
+    <link rel="stylesheet" href="../css/utilities.css">
+    <script defer src="../js/script.js"></script>
+</head>
+
+<body>
+    <div class="navbar">
+        <a class="nav-title-link" href="../index.html"><span class="nav-title">Albert Benedict</span></a>
+        <div class="nav-right">
+            <a class="button" href="mailto:albert.b.rustandi@icloud.com"><span class="button-text">Contact Me</span></a>
+            <label class="theme-toggle" for="theme-switch" title="Toggle dark mode">
+                <input type="checkbox" id="theme-switch"><span class="toggle-track"><span
+                        class="toggle-thumb"></span></span>
+            </label>
+        </div>
+    </div>
+
+    <div id="main-content">
+        <div id="project-header">
+            <div class="main-title">Guess the Song Game</div>
+            <div class="body-text">A Songspot-like music trivia game but for any artist you pick, not a fixed daily
+                song. Search one or more artists, choose a difficulty and game mode, then guess each track from the
+                shortest clip you can. Built with vanilla HTML/CSS/JS, no backend, deployed as a static site.</div>
+            <img class="project-header-image" src="../assets/images/GuessTheSongThumb.png">
+            <div class="body-text"><a class="button" href="../../daily-tracker/index.html" target="_blank"><span
+                        class="button-text">Open Live Demo</span><img src="../assets/icons/arrow-right.svg"
+                        class="right-arrow-icon"></a> <a class="button"
+                    href="https://albertbenedict.github.io/guess-the-song" target="_blank"><span
+                        class="button-text">View Code</span></a></div>
+        </div>
+
+        <div id="project-details">
+            <div class="subheader-text">Project Details / Background</div>
+            <div class="project-details-content">
+                <div class="body-text">So on a random day, I encountered <a
+                        href="https://www.youtube.com/watch?v=_FoiXZs4uyU">this
+                        video</a> and as someone who averages 15,000 minutes of music a month, I
+                    thought, "I should be able to do this." But then I tried it, and quickly realized those 15,000
+                    minutes come from repeatedly listening to a pretty narrow rotation of artists, recognizing a random
+                    song by a random artist from a 0.1 second clip just wasn't happening. That's when the idea hit:
+                    what if I built the same concept, but customizable where I pick my own artist(s), game mode,
+                    difficulty,
+                    and all that? So here it is, I miserably lost at someone else's version, so I built one that I could
+                    actually be good at.</div>
+                <div class="body-text"><strong>Tech:</strong> HTML (page structure/markup), CSS (theme and layouts), JS
+                    (game logic: artist search, fetching songs from iTunes, round flow, scoring, results screen).
+                    Difficulty tiers are a heuristic where buildTiers() treats the top 20% of
+                    iTunes's search-relevance results as "hits" since no free API exposes real popularity numbers. Songs
+                    are dealt from a shuffled "bag" per difficulty (pickOneRound()) so the same track can't repeat
+                    until every other song in that pool has been used. Playback uses the Web Audio API
+                    (AudioBufferSourceNode.start(when, offset, duration)) for sample-accurate clip timing. Theme
+                    toggle reuses the same data-theme + localStorage pattern as the rest of this site.</div>
+                <div class="body-text"><strong>What I learned:</strong> a plain &lt;audio&gt; element controlled with
+                    currentTime + setTimeout isn't precise enough for a true 0.1 second clip — it's fine on desktop
+                    but unreliable on mobile Safari, sometimes producing no audible sound at all. Switching to a decoded
+                    AudioBuffer with start(when, offset, duration) fixed it, since the browser's audio engine
+                    handles the exact timing instead of JavaScript timers trying to. Also learned the hard way that
+                    Deezer's API blocks direct browser requests (no CORS) and Spotify's requires a secret that can't
+                    safely live in a public static site, so iTunes's Search API was the only free, no-auth option that
+                    actually works from the browser.</div>
+                <div class="body-text"><strong>Next:</strong> Real artist photos instead of album-art thumbnails, pulled
+                    from other sources.</div>
+            </div>
+        </div>
+
+        <div id="project-gallery">
+            <div class="subheader-text">Features</div>
+            <div class="project-gallery-content">
+                <div class="gallery-image-container half-width">
+                    <img src="../assets/images/Guess-the-Song2.png" class="gallery-image">
+                    <span class="image-caption">Normal Mode: Choose the Artist you want, Set the number of questions,
+                        Choose The difficulty, Answer Questions based on the previously set number.</span>
+                </div>
+                <div class="gallery-image-container half-width">
+                    <img src="../assets/images/Guess-the-Song1.png" class="gallery-image">
+                    <span class="image-caption">Endless Mode: Choose the Artist you want,Choose The difficulty,
+                        Answer as many questions as you can.</span>
+                </div>
+                <div class="gallery-image-container">
+                    <img src="../assets/images/desktop.jpeg" class="gallery-image">
+                    <span class="image-caption">Responsive + dark mode reuses portfolio theme (utilities.css:3,
+                        script.js:13). Deployed as static site.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer">
+        <div class="footer-icons">
+            <a class="icon-link" target="_blank" href="https://www.linkedin.com/in/albert-benedict-rustandi/"><img
+                    src="../assets/icons/linkedin.svg" class="footer-icon" /></a>
+            <a class="icon-link" target="_blank" href="https://www.instagram.com/albertbenedicttt/"><img
+                    src="../assets/icons/instagram.svg" class="footer-icon" /></a>
+            <a class="icon-link" target="_blank" href="https://x.com/albertbenedict_"><img src="../assets/icons/x.svg"
+                    class="footer-icon" /></a>
+            <a class="icon-link" href="mailto:albert.b.rustandi@icloud.com"><img src="../assets/icons/mail.svg"
+                    class="footer-icon" /></a>
+        </div>
+        <div class="footer-copyright">© 2026 | Albert Benedict</div>
+    </div>
+</body>
+
+</html>
