@@ -37,7 +37,10 @@
       <div class="body-text">A minimal daily productivity app with two modules: todos (add/complete/filter) and habits
         (daily check + streak). Built with vanilla HTML/CSS/JS and localStorage, no frameworks — to practice
         fundamentals.</div>
-      <img class="project-header-image" src="../assets/images/code.jpeg">
+      <div class="project-header-image-wrapper">
+        <img class="project-header-image light-image" src="../assets/images/code.jpeg" alt="Daily Tracker light">
+        <img class="project-header-image dark-image" src="../assets/images/code.jpeg" alt="Daily Tracker dark">
+      </div>
       <div class="project-links"><a class="button" href="../../daily-tracker/index.html" target="_blank"><span
             class="button-text">Open Live Demo</span><img src="../assets/icons/arrow-right.svg"
             class="right-arrow-icon"></a> <a class="button" href="https://github.com/albertbenedict/daily-tracker"
@@ -66,17 +69,26 @@
       <div class="subheader-text">Features</div>
       <div class="project-gallery-content">
         <div class="gallery-image-container half-width">
-          <img src="../assets/images/code.jpeg" class="gallery-image">
+          <div class="gallery-image-wrapper">
+            <img src="../assets/images/code.jpeg" class="gallery-image light-image" alt="Todos light">
+            <img src="../assets/images/code.jpeg" class="gallery-image dark-image" alt="Todos dark">
+          </div>
           <span class="image-caption">Todos: Add, check complete, filter All/Active/Done, delete, counter +
             localStorage.</span>
         </div>
         <div class="gallery-image-container half-width">
-          <img src="../assets/images/sketchbook.jpeg" class="gallery-image">
+          <div class="gallery-image-wrapper">
+            <img src="../assets/images/sketchbook.jpeg" class="gallery-image light-image" alt="Habits light">
+            <img src="../assets/images/sketchbook.jpeg" class="gallery-image dark-image" alt="Habits dark">
+          </div>
           <span class="image-caption">Habits: Add habit, check today, streak 🔥, undo, delete. Consecutive-day
             logic.</span>
         </div>
         <div class="gallery-image-container">
-          <img src="../assets/images/desktop.jpeg" class="gallery-image">
+          <div class="gallery-image-wrapper">
+            <img src="../assets/images/desktop.jpeg" class="gallery-image light-image" alt="Responsive light">
+            <img src="../assets/images/desktop.jpeg" class="gallery-image dark-image" alt="Responsive dark">
+          </div>
           <span class="image-caption">Responsive + dark mode reuses portfolio theme (utilities.css:3, script.js:13).
             Deployed as static site.</span>
         </div>

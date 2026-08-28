@@ -40,7 +40,12 @@
                 artist you pick, not a fixed daily song. Search one or more artists, choose a difficulty and game mode,
                 then guess each track from the shortest clip you can. Vanilla HTML/CSS/JS, iTunes Search/Lookup +
                 YouTube Data v3, Web Audio API, static-site deploy.</div>
-            <img class="project-header-image" src="../assets/images/GuessTheSongThumb.png">
+            <div class="project-header-image-wrapper">
+                <img class="project-header-image light-image" src="../assets/images/guess-song-game/light-thumb.png"
+                    alt="Guess the Song light">
+                <img class="project-header-image dark-image" src="../assets/images/guess-song-game/dark-thumb.png"
+                    alt="Guess the Song dark">
+            </div>
             <div class="project-links"><a class="button" href="https://albertbenedict.github.io/guess-the-song/"
                     target="_blank"><span class="button-text">Open Live
                         Demo</span><img src="../assets/icons/arrow-right.svg" class="right-arrow-icon"></a> <a
@@ -71,14 +76,15 @@
                     Map-cached, referrer-restricted). Theme toggle reuses the same data-theme + localStorage
                     pattern as the rest of this site.</div>
                 <div class="body-text"><strong>What I learned:</strong> a plain &lt;audio&gt; element controlled with
-                    currentTime + setTimeout isn't precise enough for a true 0.1 second clip — it's fine on desktop
+                    currentTime + setTimeout isn't precise enough for a true 0.1 second clip, it's fine on desktop
                     but unreliable on mobile Safari, sometimes producing no audible sound at all. Switching to a decoded
                     AudioBuffer with start(when, offset, duration) fixed it, since the browser's audio engine
                     handles the exact timing instead of JavaScript timers trying to. Also learned the hard way that
                     Deezer's API blocks direct browser requests (no CORS) and Spotify's requires a secret that can't
                     safely live in a public static site, so iTunes's Search API was the only free, no-auth option that
                     actually works from the browser.</div>
-                <div class="body-text"><strong>Next:</strong> Share results feature, keyboard shortcuts (Space = play, Enter = guess, etc)</div>
+                <div class="body-text"><strong>Next:</strong> Share results feature, keyboard shortcuts (Space = play,
+                    Enter = guess, etc)</div>
             </div>
         </div>
 
@@ -86,19 +92,56 @@
             <div class="subheader-text">Features</div>
             <div class="project-gallery-content">
                 <div class="gallery-image-container half-width">
-                    <img src="../assets/images/Guess-the-Song2.png" class="gallery-image">
-                    <span class="image-caption">Normal Mode: Choose the Artist you want, Set the number of questions,
-                        Choose The difficulty, Answer Questions based on the previously set number.</span>
+                    <div class="gallery-image-wrapper">
+                        <img src="../assets/images/guess-song-game/normal-light.png" class="gallery-image light-image"
+                            alt="Normal mode light">
+                        <img src="../assets/images/guess-song-game/normal-dark.png" class="gallery-image dark-image"
+                            alt="Normal mode dark">
+                    </div>
+                    <span class="image-caption">Normal mode — Pick 1–5 artists, set 3–30 questions, choose difficulty
+                        (Easy = hits, Medium = mix, Hard = all), songs dealt from a shuffled bag so no repeat until the
+                        pool is
+                        empty.</span>
                 </div>
                 <div class="gallery-image-container half-width">
-                    <img src="../assets/images/Guess-the-Song1.png" class="gallery-image">
-                    <span class="image-caption">Endless Mode: Choose the Artist you want,Choose The difficulty,
-                        Answer as many questions as you can.</span>
+                    <div class="gallery-image-wrapper">
+                        <img src="../assets/images/guess-song-game/endless-light.png" class="gallery-image light-image"
+                            alt="Endless mode light">
+                        <img src="../assets/images/guess-song-game/endless-dark.png" class="gallery-image dark-image"
+                            alt="Endless mode dark">
+                    </div>
+                    <span class="image-caption">Pick 1–5 artists, choose difficulty (Easy = hits, Medium = mix, Hard =
+                        all), no fixed length so you play until you miss. Best score is later saved in
+                        localStorage.</span>
                 </div>
                 <div class="gallery-image-container">
-                    <img src="../assets/images/desktop.jpeg" class="gallery-image">
-                    <span class="image-caption">Responsive + dark mode reuses portfolio theme (utilities.css:3,
-                        script.js:13). Deployed as static site.</span>
+                    <div class="gallery-image-wrapper">
+                        <img src="../assets/images/guess-song-game/play-light.png" class="gallery-image light-image"
+                            alt="Responsive light">
+                        <img src="../assets/images/guess-song-game/play-dark.png" class="gallery-image dark-image"
+                            alt="Responsive dark">
+                    </div>
+                    <span class="image-caption">Fetch n play — Pool built from iTunes (no-auth, CORS-allowed) →
+                        hit/niche tiers → bag shuffle. Each guess stages the clip 0.1s-10s for 500-100 pts, audio is
+                        fetch → decodeAudioData → start(when, offset, duration), with HTMLAudio fallback.</span>
+                </div>
+                <div class="gallery-image-container half-width">
+                    <div class="gallery-image-wrapper">
+                        <img src="../assets/images/guess-song-game/normal-result-light.png"
+                            class="gallery-image light-image" alt="Feature light">
+                        <img src="../assets/images/guess-song-game/normal-result-dark.png"
+                            class="gallery-image dark-image" alt="Feature dark">
+                    </div>
+                    <span class="image-caption">Replace caption — left image below.</span>
+                </div>
+                <div class="gallery-image-container half-width">
+                    <div class="gallery-image-wrapper">
+                        <img src="../assets/images/guess-song-game/endless-result-light.png"
+                            class="gallery-image light-image" alt="Feature light">
+                        <img src="../assets/images/guess-song-game/endless-result-dark.png"
+                            class="gallery-image dark-image" alt="Feature dark">
+                    </div>
+                    <span class="image-caption">Replace caption — right image below.</span>
                 </div>
             </div>
         </div>

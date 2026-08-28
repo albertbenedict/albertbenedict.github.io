@@ -24,11 +24,11 @@ body {
   margin: 120px 425px;
   display: flex;
   flex-direction: column;
-  gap: 96px;
+  gap: 50px;
 }
 
 #main-content:has(#project-header) {
-  margin: 140px 425px 0 425px;
+  margin: 120px 425px 0 425px;
 }
 
 
@@ -178,6 +178,23 @@ body {
   opacity: 1;
 }
 
+/* Project header image — theme toggle with fade (synced to body 0.25s) */
+.project-header-image-wrapper {
+  display: grid;
+  width: 100%;
+}
+.project-header-image-wrapper .project-header-image {
+  grid-area: 1 / 1;
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: opacity 0.25s ease;
+}
+.project-header-image-wrapper .light-image { opacity: 1; }
+.project-header-image-wrapper .dark-image { opacity: 0; }
+[data-theme="dark"] .project-header-image-wrapper .light-image { opacity: 0; }
+[data-theme="dark"] .project-header-image-wrapper .dark-image { opacity: 1; }
+
 /* Project Pages */
 
 #project-header {
@@ -239,6 +256,33 @@ body {
   width: 100%;
   height: auto;
 }
+
+/* Make paired half-width gallery images equal height per row */
+.gallery-image-container.half-width .gallery-image-wrapper {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+.gallery-image-container.half-width .gallery-image {
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Gallery image — theme toggle with fade (same 0.25s as body) */
+.gallery-image-wrapper {
+  display: grid;
+  width: 100%;
+}
+.gallery-image-wrapper .gallery-image {
+  grid-area: 1 / 1;
+  width: 100%;
+  height: auto;
+  transition: opacity 0.25s ease;
+}
+.gallery-image-wrapper .light-image { opacity: 1; }
+.gallery-image-wrapper .dark-image { opacity: 0; }
+[data-theme="dark"] .gallery-image-wrapper .light-image { opacity: 0; }
+[data-theme="dark"] .gallery-image-wrapper .dark-image { opacity: 1; }
 
 
 /* Extra Extra large devices (large laptops and desktops, 1200px and below) */
