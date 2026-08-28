@@ -21,7 +21,7 @@ body {
 /* Main Page Layout */
 
 #main-content {
-  margin: 195px 425px;
+  margin: 120px 425px;
   display: flex;
   flex-direction: column;
   gap: 96px;
@@ -57,11 +57,15 @@ body {
 #portfolio-header-text-container {
   display: flex;
   flex-direction: column;
-  gap: 34px;
+  gap: 20px;
   flex-basis: 50%;
 }
 
-
+.header-text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
 
 
 /* About Section */
@@ -149,6 +153,7 @@ body {
   height: 200px;
   overflow: hidden;
 }
+
 .project-image-wrapper .project-image {
   position: absolute;
   inset: 0;
@@ -156,10 +161,22 @@ body {
   height: 200px;
   transition: opacity 0.25s ease;
 }
-.light-image { opacity: 1; }
-.dark-image { opacity: 0; }
-[data-theme="dark"] .light-image { opacity: 0; }
-[data-theme="dark"] .dark-image { opacity: 1; }
+
+.light-image {
+  opacity: 1;
+}
+
+.dark-image {
+  opacity: 0;
+}
+
+[data-theme="dark"] .light-image {
+  opacity: 0;
+}
+
+[data-theme="dark"] .dark-image {
+  opacity: 1;
+}
 
 /* Project Pages */
 
@@ -229,6 +246,7 @@ body {
   #main-content {
     margin: 195px 275px;
   }
+
   #main-content:has(#project-header) {
     margin: 140px 275px 0 275px;
   }
@@ -239,6 +257,7 @@ body {
   #main-content {
     margin: 195px 175px;
   }
+
   #main-content:has(#project-header) {
     margin: 140px 175px 0 175px;
   }
@@ -249,6 +268,7 @@ body {
   #main-content {
     margin: 195px 75px;
   }
+
   #main-content:has(#project-header) {
     margin: 140px 75px 0 75px;
   }
@@ -259,6 +279,7 @@ body {
   #main-content {
     margin: 120px 50px;
   }
+
   #main-content:has(#project-header) {
     margin: 90px 50px 0 50px;
   }
@@ -277,6 +298,7 @@ body {
   #main-content {
     margin: 95px 20px;
   }
+
   #main-content:has(#project-header) {
     margin: 70px 20px 0 20px;
   }
@@ -285,7 +307,7 @@ body {
     max-width: 100%;
   }
 
-    #education-skills-section {
+  #education-skills-section {
     flex-direction: column;
   }
 }
