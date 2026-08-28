@@ -12,7 +12,8 @@
     </script>
     <link rel="icon" href="../assets/images/favicon.png" />
     <title>Guess the Song | Albert Benedict</title>
-    <meta name="description" content="Todos + Habits tracker built with vanilla HTML/CSS/JS.">
+    <meta name="description"
+        content="Pick artist(s) and guess each track from the shortest clip you can (0.1s → 10s). Vanilla HTML/CSS/JS, iTunes Search + YouTube Data v3, Web Audio for sample-accurate playback.">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="../css/layout.css">
     <link rel="stylesheet" href="../css/typography.css">
@@ -35,9 +36,10 @@
     <div id="main-content">
         <div id="project-header">
             <div class="main-title">Guess the Song Game</div>
-            <div class="body-text">A Songspot-like music trivia game but for any artist you pick, not a fixed daily
-                song. Search one or more artists, choose a difficulty and game mode, then guess each track from the
-                shortest clip you can. Built with vanilla HTML/CSS/JS, no backend, deployed as a static site.</div>
+            <div class="body-text">A <a href="https://songspot.net/">Songspot</a>-like music trivia game but for any
+                artist you pick, not a fixed daily song. Search one or more artists, choose a difficulty and game mode,
+                then guess each track from the shortest clip you can. Vanilla HTML/CSS/JS, iTunes Search/Lookup +
+                YouTube Data v3, Web Audio API, static-site deploy.</div>
             <img class="project-header-image" src="../assets/images/GuessTheSongThumb.png">
             <div class="project-links"><a class="button" href="https://albertbenedict.github.io/guess-the-song/"
                     target="_blank"><span class="button-text">Open Live
@@ -57,17 +59,17 @@
                     minutes come from repeatedly listening to a pretty narrow rotation of artists, recognizing a random
                     song by a random artist from a 0.1 second clip just wasn't happening. That's when the idea hit:
                     what if I built the same concept, but customizable where I pick my own artist(s), game mode,
-                    difficulty,
-                    and all that? So here it is, I miserably lost at someone else's version, so I built one that I could
-                    actually be good at.</div>
+                    difficulty, and all that? So here it is, I miserably lost at someone else's version, so I built one
+                    that I could actually be good at.</div>
                 <div class="body-text"><strong>Tech:</strong> HTML (page structure/markup), CSS (theme and layouts), JS
                     (game logic: artist search, fetching songs from iTunes, round flow, scoring, results screen).
-                    Difficulty tiers are a heuristic where buildTiers() treats the top 20% of
-                    iTunes's search-relevance results as "hits" since no free API exposes real popularity numbers. Songs
-                    are dealt from a shuffled "bag" per difficulty (pickOneRound()) so the same track can't repeat
-                    until every other song in that pool has been used. Playback uses the Web Audio API
-                    (AudioBufferSourceNode.start(when, offset, duration)) for sample-accurate clip timing. Theme
-                    toggle reuses the same data-theme + localStorage pattern as the rest of this site.</div>
+                    Difficulty tiers are a heuristic where buildTiers() treats the top 20% of iTunes's search-relevance
+                    results as "hits" since no free API exposes real popularity numbers. Songs are dealt from a shuffled
+                    "bag" per difficulty (pickOneRound()) so the same track can't repeat until every other song in that
+                    pool has been used. Playback uses Web Audio (AudioBufferSourceNode.start(when, offset, duration))
+                    for sample-accurate timing; artist avatars upgrade via YouTube Data v3 (- Topic channels, 100/day,
+                    Map-cached, referrer-restricted). Theme toggle reuses the same data-theme + localStorage
+                    pattern as the rest of this site.</div>
                 <div class="body-text"><strong>What I learned:</strong> a plain &lt;audio&gt; element controlled with
                     currentTime + setTimeout isn't precise enough for a true 0.1 second clip — it's fine on desktop
                     but unreliable on mobile Safari, sometimes producing no audible sound at all. Switching to a decoded
@@ -76,8 +78,7 @@
                     Deezer's API blocks direct browser requests (no CORS) and Spotify's requires a secret that can't
                     safely live in a public static site, so iTunes's Search API was the only free, no-auth option that
                     actually works from the browser.</div>
-                <div class="body-text"><strong>Next:</strong> Real artist photos instead of album-art thumbnails, pulled
-                    from other sources.</div>
+                <div class="body-text"><strong>Next:</strong> Share results feature, keyboard shortcuts (Space = play, Enter = guess, etc)</div>
             </div>
         </div>
 
