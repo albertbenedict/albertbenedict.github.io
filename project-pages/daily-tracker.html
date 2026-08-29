@@ -35,11 +35,13 @@
     <div id="project-header">
       <div class="main-title">Daily Tracker — Todos + Habits</div>
       <div class="body-text">A minimal daily productivity app with two modules: todos (add/complete/filter) and habits
-        (daily check + streak). Built with vanilla HTML/CSS/JS and localStorage, no frameworks — to practice
+        (daily check + streak). Built with vanilla HTML/CSS/JS and localStorage, no frameworks. Built to practice
         fundamentals.</div>
       <div class="project-header-image-wrapper">
-        <img class="project-header-image light-image" src="../assets/images/code.jpeg" alt="Daily Tracker light">
-        <img class="project-header-image dark-image" src="../assets/images/code.jpeg" alt="Daily Tracker dark">
+        <img class="project-header-image light-image" src="../assets/images/daily-tracker/daily-light.png"
+          alt="Daily Tracker light">
+        <img class="project-header-image dark-image" src="../assets/images/daily-tracker/daily-dark.png"
+          alt="Daily Tracker dark">
       </div>
       <div class="project-links"><a class="button" href="../../daily-tracker/index.html" target="_blank"><span
             class="button-text">Open Live Demo</span><img src="../assets/icons/arrow-right.svg"
@@ -50,18 +52,20 @@
     <div id="project-details">
       <div class="subheader-text">Project Details / Background</div>
       <div class="project-details-content">
-        <div class="body-text">I had no real project to show, so I built one from scratch to replace the template
-          placeholder. Scope was deliberately small: Todos + Habits. Each uses the same CRUD pattern (add → list →
-          toggle → delete → persist) which made the second module faster to build after the first.</div>
-        <div class="body-text"><strong>Tech:</strong> HTML (semantic forms/lists), CSS (variables + flex + responsive at
-          layout.css:219), JS (DOM, arrays, dates, localStorage). Data saved under keys `daily-tracker-todos` and
-          `daily-tracker-habits`. Today helper at `app.js:getTodayString()` uses `YYYY-MM-DD` for easy streak math.
+        <div class="body-text">I wanted a small, contained project to practice web fundamentals before moving on to
+          anything more complex so I picked something that has a purpose: a todos + habits tracker. Scope was
+          deliberately
+          kept small, and both modules share the same CRUD pattern (add → list → toggle → delete → persist), which made
+          the second module faster to build once the first was working.</div>
+        <div class="body-text"><strong>Tech:</strong> HTML (semantic forms/lists), CSS (variables + flex), JS (DOM,
+          arrays, dates, localStorage). Data saved under keys `daily-tracker-todos` and `daily-tracker-habits`. Today
+          helper at `app.js:getTodayString()` uses `YYYY-MM-DD` for easy streak math.
         </div>
         <div class="body-text"><strong>What I learned:</strong> Tab switching without framework (toggle `.active`
           class), filtering todos by `active/completed`, and streak logic: if lastDone is yesterday increment else reset
-          to 1. Hardest bug was handling undo for habits without breaking streak.</div>
-        <div class="body-text"><strong>Next:</strong> Add Expenses module (amount + totals) as v2 — same pattern, new
-          math.</div>
+          to 1. A bug fix that took a bit longer was handling undo for habits without breaking streak.</div>
+        <div class="body-text"><strong>Next:</strong> Add Expenses module (amount + totals) as v2 — same pattern with a
+          new math.</div>
       </div>
     </div>
 
