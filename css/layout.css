@@ -101,7 +101,6 @@ body {
 }
 
 /* Project Cards */
-
 .project-card {
   max-width: calc((100% - 32px) / 3);
   display: flex;
