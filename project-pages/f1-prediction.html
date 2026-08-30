@@ -12,7 +12,8 @@
     </script>
     <link rel="icon" href="../assets/images/favicon.png" />
     <title>F1 Weekend Predictor | Albert Benedict</title>
-    <meta name="description" content="Pick pole, winner, podium, sprint and wildcard for each F1 weekend and auto-score vs live results. Vanilla HTML/CSS/JS, Jolpica + OpenF1, cached via localStorage.">
+    <meta name="description"
+        content="Pick pole, winner, podium, sprint and wildcard for each F1 weekend and auto-score vs live results. Vanilla HTML/CSS/JS, Jolpica + OpenF1, cached via localStorage.">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="../css/layout.css">
     <link rel="stylesheet" href="../css/typography.css">
@@ -35,10 +36,14 @@
     <div id="main-content">
         <div id="project-header">
             <div class="main-title">F1 Weekend Predictor</div>
-            <div class="body-text">A vanilla HTML/CSS/JS prediction game for Formula 1 weekends. Pick pole, podium, winner and a wildcard for each Grand Prix and see how you score once results are in — static site, no backend.</div>
+            <div class="body-text">A vanilla HTML/CSS/JS prediction game for Formula 1 weekends. Pick pole, podium,
+                winner and a wildcard for each Grand Prix and see how you score once results are in — static site, no
+                backend.</div>
             <div class="project-header-image-wrapper">
-                <img class="project-header-image light-image" src="../assets/images/desktop.jpeg" alt="F1 Predictor light">
-                <img class="project-header-image dark-image" src="../assets/images/desktop.jpeg" alt="F1 Predictor dark">
+                <img class="project-header-image light-image" src="../assets/images/predict-blank-light.png"
+                    alt="F1 Predictor light">
+                <img class="project-header-image dark-image" src="../assets/images/predict-blank-dark.png"
+                    alt="F1 Predictor dark">
             </div>
             <div class="project-links"><a class="button" href="https://albertbenedict.github.io/f1-prediction/"
                     target="_blank"><span class="button-text">Open Live
@@ -51,11 +56,34 @@
         <div id="project-details">
             <div class="subheader-text">Project Details / Background</div>
             <div class="project-details-content">
-                <div class="body-text">As an F1 fan I wanted a lightweight way to play the whole weekend — not just race winner. The game covers a full Grand Prix: pole, winner, P2/P3, plus sprint pole/win on sprint weekends and a bonus Wildcard (a random P4–22 slot drawn per round via a deterministic hash so everyone gets the same target).</div>
-                <div class="body-text"><strong>Tech:</strong> HTML (tabs: Play / Your Predictions / Standings / Past Results), CSS (vars <code>--bg-color / --surface / --border-color</code> + <code>Space Grotesk</code>), vanilla JS (<code>index.html + style.css + script.js</code>, no build). Data from <a href="https://github.com/jolpica/jolpica-f1">Jolpica Ergast</a> (schedule, standings, race/qualifying/sprint results) + <a href="https://openf1.org/">OpenF1</a> (sessions, driver headshots/team colours, team logos with overrides for HAD/LIN/TSU/BOT/PER) — cached in <code>localStorage</code> (<code>cache:*</code> with TTLs per type: standings 15m, schedule 1h, results 10m, sessions 5m, media 6h) so GitHub Pages stays functional without a server. Stale cache is served on fetch failure. Predictions stored as <code>f1predict:{season}:{round}</code> and auto-scored post-race.</div>
-                <div class="body-text"><strong>Scoring:</strong> Pole 5, Win 10, Podium exact 5 / wrong slot 2, Wildcard 8, Sprint Pole 3 / Sprint Win 5 — adjustable in <code>script.js:SCORING</code>. Duplicate check on Winner/P2/P3 (pole may overlap).</div>
-                <div class="body-text"><strong>What I learned:</strong> Countdown can't just count to the race — it has to walk the whole weekend. I fetch OpenF1 <code>sessions?year=</code> and fall back to Jolpica dates via <code>buildFallbackSessions()</code> if OpenF1 is down, then render <code>Next: FP2 / Now: FP3 / LIVE</code> with <code>getTimeLeft()</code> ticking every second. Biggest gotcha was data freshness on a static host — hence TTL'd cache + serving stale on failure — and mapping 22 drivers (2026 grid) with fallback initials/logos when <code>media.formula1.com</code> 404s.</div>
-                <div class="body-text"><strong>Next:</strong> Shareable prediction card, round-to-round points chart, and optional PWA offline cache for schedule/standings.</div>
+                <div class="body-text">There is this F1 content creator on Youtube who has this segment where they try
+                    and predict the result of the upcoming F1 Grand Prix. They also have this kind of mini championship
+                    amongst themselves where who predicted better gets more points. So I thought of making it into a
+                    simple app that can fetch the real F1 result while also calculating your prediction score.</div>
+                <div class="body-text"><strong>Tech:</strong> HTML (tabs: Play / Your Predictions / Standings / Past
+                    Results), CSS (vars <code>--bg-color / --surface / --border-color</code> +
+                    <code>Space Grotesk</code>), vanilla JS (<code>index.html + style.css + script.js</code>, no build).
+                    Data from <a href="https://github.com/jolpica/jolpica-f1">Jolpica Ergast</a> (schedule, standings,
+                    race/qualifying/sprint results) + <a href="https://openf1.org/">OpenF1</a> (sessions, driver
+                    headshots/team colours, team logos with overrides for HAD/LIN/TSU/BOT/PER) — cached in
+                    <code>localStorage</code> (<code>cache:*</code> with TTLs per type: standings 15m, schedule 1h,
+                    results 10m, sessions 5m, media 6h) so GitHub Pages stays functional without a server. Stale cache
+                    is served on fetch failure. Predictions stored as <code>f1predict:{season}:{round}</code> and
+                    auto-scored post-race.
+                </div>
+                <div class="body-text"><strong>Scoring:</strong> Pole 5, Win 10, Podium exact 5 / wrong slot 2, Wildcard
+                    8, Sprint Pole 3 / Sprint Win 5 — adjustable in <code>script.js:SCORING</code>. Duplicate check on
+                    Winner/P2/P3 (pole may overlap).</div>
+                <div class="body-text"><strong>What I learned:</strong> Countdown can't just count to the race — it has
+                    to walk the whole weekend. I fetch OpenF1 <code>sessions?year=</code> and fall back to Jolpica dates
+                    via <code>buildFallbackSessions()</code> if OpenF1 is down, then render
+                    <code>Next: FP2 / Now: FP3 / LIVE</code> with <code>getTimeLeft()</code> ticking every second.
+                    Biggest gotcha was data freshness on a static host — hence TTL'd cache + serving stale on failure —
+                    and mapping 22 drivers (2026 grid) with fallback initials/logos when <code>media.formula1.com</code>
+                    404s.
+                </div>
+                <div class="body-text"><strong>Next:</strong> Shareable prediction card, round-to-round points chart,
+                    and optional PWA offline cache for schedule/standings.</div>
             </div>
         </div>
 
@@ -67,21 +95,29 @@
                         <img src="../assets/images/desktop.jpeg" class="gallery-image light-image" alt="Play tab light">
                         <img src="../assets/images/desktop.jpeg" class="gallery-image dark-image" alt="Play tab dark">
                     </div>
-                    <span class="image-caption">Play — Countdown to FP1 then Next/Now per session (OpenF1 + Jolpica fallback), plus prediction form (Pole 5, Win 10, P2/P3 exact 5 / any podium 2, Wildcard P4–22 bonus 8).</span>
+                    <span class="image-caption">Play — Countdown to FP1 then Next/Now per session (OpenF1 + Jolpica
+                        fallback), plus prediction form (Pole 5, Win 10, P2/P3 exact 5 / any podium 2, Wildcard P4–22
+                        bonus 8).</span>
                 </div>
                 <div class="gallery-image-container half-width">
                     <div class="gallery-image-wrapper">
-                        <img src="../assets/images/code.jpeg" class="gallery-image light-image" alt="Predictions tab light">
-                        <img src="../assets/images/code.jpeg" class="gallery-image dark-image" alt="Predictions tab dark">
+                        <img src="../assets/images/code.jpeg" class="gallery-image light-image"
+                            alt="Predictions tab light">
+                        <img src="../assets/images/code.jpeg" class="gallery-image dark-image"
+                            alt="Predictions tab dark">
                     </div>
-                    <span class="image-caption">Your Predictions — current weekend + history from localStorage, auto-scored vs actual race/qualifying/sprint results.</span>
+                    <span class="image-caption">Your Predictions — current weekend + history from localStorage,
+                        auto-scored vs actual race/qualifying/sprint results.</span>
                 </div>
                 <div class="gallery-image-container">
                     <div class="gallery-image-wrapper">
-                        <img src="../assets/images/sketchbook.jpeg" class="gallery-image light-image" alt="Standings light">
-                        <img src="../assets/images/sketchbook.jpeg" class="gallery-image dark-image" alt="Standings dark">
+                        <img src="../assets/images/sketchbook.jpeg" class="gallery-image light-image"
+                            alt="Standings light">
+                        <img src="../assets/images/sketchbook.jpeg" class="gallery-image dark-image"
+                            alt="Standings dark">
                     </div>
-                    <span class="image-caption">Standings & Past Results — Drivers/Constructors from Jolpica with OpenF1 headshots/team colours, and Top 10 race / Top 5 quali / sprint Top 5 with Jump to round.</span>
+                    <span class="image-caption">Standings & Past Results — Drivers/Constructors from Jolpica with OpenF1
+                        headshots/team colours, and Top 10 race / Top 5 quali / sprint Top 5 with Jump to round.</span>
                 </div>
             </div>
         </div>
