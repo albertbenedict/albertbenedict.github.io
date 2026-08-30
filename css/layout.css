@@ -227,6 +227,10 @@ body {
   gap: 34px;
 }
 
+.project-details-content.blog-content {
+  gap: 24px;
+}
+
 /* Project Gallery */
 
 #project-gallery {
@@ -257,7 +261,7 @@ body {
   height: auto;
 }
 
-/* Make paired half-width gallery images equal height per row */
+
 .gallery-image-container.half-width .gallery-image-wrapper {
   aspect-ratio: 4 / 3;
   overflow: hidden;
@@ -268,7 +272,6 @@ body {
   object-position: center;
 }
 
-/* Gallery image — theme toggle with fade (same 0.25s as body) */
 .gallery-image-wrapper {
   display: grid;
   width: 100%;
