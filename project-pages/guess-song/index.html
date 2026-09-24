@@ -13,7 +13,7 @@
     <link rel="icon" href="../../assets/images/favicon.png" />
     <title>Guess the Song | Albert Benedict</title>
     <meta name="description"
-        content="Pick artist(s) and guess each track from the shortest clip you can (0.1s → 10s). Vanilla HTML/CSS/JS, iTunes Search + YouTube Data v3, Web Audio for sample-accurate playback.">
+        content="Pick artist(s) and guess each track from the shortest clip you can (0.1s → 10s). Vanilla HTML/CSS/JS, iTunes Search + YouTube Data v3 + Spotify ranking, Web Audio for sample-accurate playback.">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="../../css/layout.css">
     <link rel="stylesheet" href="../../css/typography.css">
@@ -39,7 +39,7 @@
             <div class="body-text">A <a href="https://songspot.net/">Songspot</a>-like music trivia game but for any
                 artist you pick, not a fixed daily song. Search one or more artists, choose a difficulty and game mode,
                 then guess each track from the shortest clip you can. Vanilla HTML/CSS/JS, iTunes Search/Lookup +
-                YouTube Data v3, Web Audio API, static-site deploy.</div>
+                YouTube Data v3 + Spotify ranking, Web Audio API.</div>
             <div class="project-header-image-wrapper">
                 <img class="project-header-image light-image" src="../../assets/images/guess-song-game/light-thumb.png"
                     alt="Guess the Song light">
@@ -68,8 +68,8 @@
                     that I could actually be good at.</div>
                 <div class="body-text"><strong>Tech:</strong> HTML (page structure/markup), CSS (theme and layouts), JS
                     (game logic: artist search, fetching songs from iTunes, round flow, scoring, results screen).
-                    Difficulty tiers are a heuristic where buildTiers() treats the top 20% of iTunes's search-relevance
-                    results as "hits" since no free API exposes real popularity numbers. Songs are dealt from a shuffled
+                    Difficulty tiers use Spotify popularity to rank tracks, with the top-ranked tracks treated as
+                    "hits" (iTunes still provides search and 30s previews). Songs are dealt from a shuffled
                     "bag" per difficulty (pickOneRound()) so the same track can't repeat until every other song in that
                     pool has been used. Playback uses Web Audio (AudioBufferSourceNode.start(when, offset, duration))
                     for sample-accurate timing; artist avatars upgrade via YouTube Data v3 (- Topic channels, 100/day,
@@ -81,8 +81,8 @@
                     AudioBuffer with start(when, offset, duration) fixed it, since the browser's audio engine
                     handles the exact timing instead of JavaScript timers trying to. Also learned the hard way that
                     Deezer's API blocks direct browser requests and Spotify's requires a secret that can't
-                    safely live in a public static site, so iTunes's Search API was the only free, no-auth option that
-                    actually works from the browser.</div>
+                    safely live in public client-side code, so iTunes's Search API handles search and 30s previews
+                    while Spotify is now used separately just for popularity ranking.</div>
                 <div class="body-text"><strong>Next:</strong> Share results feature, update way to filter "hits"</div>
             </div>
         </div>
