@@ -109,15 +109,16 @@ body {
 }
 
 #see-more-projects {
-  align-self: flex-start;
+  align-self: flex-end;
   cursor: pointer;
   margin-top: 8px;
 }
 #see-more-projects .right-arrow-icon {
+  transform: rotate(90deg);
   transition: transform 0.25s ease;
 }
 #see-more-projects[aria-expanded="true"] .right-arrow-icon {
-  transform: rotate(90deg);
+  transform: rotate(270deg);
 }
 
 /* Project Cards */
