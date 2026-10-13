@@ -100,6 +100,26 @@ body {
   flex-wrap: wrap;
 }
 
+/* Extra projects hidden until "See More" expands the grid to 2 rows */
+.project-card.extra-project {
+  display: none;
+}
+.projects-container.show-all .project-card.extra-project {
+  display: flex;
+}
+
+#see-more-projects {
+  align-self: flex-start;
+  cursor: pointer;
+  margin-top: 8px;
+}
+#see-more-projects .right-arrow-icon {
+  transition: transform 0.25s ease;
+}
+#see-more-projects[aria-expanded="true"] .right-arrow-icon {
+  transform: rotate(90deg);
+}
+
 /* Project Cards */
 .project-card {
   max-width: calc((100% - 32px) / 3);
@@ -194,6 +214,14 @@ body {
 .project-header-image-wrapper .dark-image { opacity: 0; }
 [data-theme="dark"] .project-header-image-wrapper .light-image { opacity: 0; }
 [data-theme="dark"] .project-header-image-wrapper .dark-image { opacity: 1; }
+
+/* Phone screenshots — cap at native width so they never upscale/blur */
+.project-header-image-wrapper.phone,
+.gallery-image-wrapper.phone {
+  max-width: 360px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 /* Project Pages */
 

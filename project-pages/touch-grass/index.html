@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <script>
+    (function () {
+      var savedTheme = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme', savedTheme || (prefersDark ? 'dark' : 'light'));
+    })();
+  </script>
+  <link rel="icon" href="../../assets/images/favicon.png" />
+  <title>Touch Grass Quest | Albert Benedict</title>
+  <meta name="description"
+    content="Outdoor scavenger-hunt game — daily quests, live camera check-ins verified on-device by CLIP, XP plant and Grass Dex.">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="../../css/layout.css">
+  <link rel="stylesheet" href="../../css/typography.css">
+  <link rel="stylesheet" href="../../css/utilities.css">
+  <script defer src="../../js/script.js"></script>
+</head>
+
+<body>
+  <div class="navbar">
+    <a class="nav-title-link" href="../../index.html"><span class="nav-title">Albert Benedict</span></a>
+    <div class="nav-right">
+      <a class="button" href="mailto:albert.b.rustandi@icloud.com"><span class="button-text">Contact Me</span></a>
+      <label class="theme-toggle" for="theme-switch" title="Toggle dark mode">
+        <input type="checkbox" id="theme-switch"><span class="toggle-track"><span class="toggle-thumb"></span></span>
+      </label>
+    </div>
+  </div>
+
+  <div id="main-content">
+    <div id="project-header">
+      <div class="main-title">Touch Grass Quest</div>
+      <div class="body-text">A scavenger-hunt game that sends you outside. Get daily outdoor quests, photograph them
+        with the live camera, and an on-device AI checks the find. Finds earn XP that grows a plant and fill your Grass
+        Dex. Built for the Hacktoberfest Week 1: Touch Grass challenge.</div>
+      <div class="project-header-image-wrapper phone">
+        <img class="project-header-image light-image" src="../../assets/images/touch-grass/welcome.png"
+          alt="Touch Grass Quest welcome light">
+        <img class="project-header-image dark-image" src="../../assets/images/touch-grass/welcome.png"
+          alt="Touch Grass Quest welcome dark">
+      </div>
+      <div class="project-links"><a class="button" href="https://albertbenedict.github.io/touch-grass/"
+          target="_blank"><span class="button-text">Open Live Demo</span><img src="../../assets/icons/arrow-right.svg"
+            class="right-arrow-icon"></a> <a class="button" href="https://github.com/albertbenedict/touch-grass"
+          target="_blank"><span class="button-text">View Code</span></a></div>
+    </div>
+
+    <div id="project-details">
+      <div class="subheader-text">Project Details / Background</div>
+      <div class="project-details-content">
+        <div class="body-text">I wanted an entry for the Hacktoberfest open-source AI challenge that actually gets
+          people off the couch. Each day the app deals five quests (2 easy, 2 medium, 1 hard) plus one shared quest
+          everyone gets on the same day. You open the live camera, take a photo, and CLIP compares it against the target
+          plus a set of negatives. A 3-minute cooldown after each check stops couch farming.</div>
+        <div class="body-text"><strong>Tech:</strong> Single-file vanilla HTML/CSS/JS PWA (`index.html` + `styles.css` +
+          `sw.js`, no backend, no account). Photo check is `Xenova/clip-vit-base-patch32` zero-shot classification,
+          quest text is Gemma 3 270M falling back to Qwen2.5 0.5B then templates — all via transformers.js from
+          jsDelivr, model IDs as constants at the top of the script. XP is 10/20/40 by difficulty plus 50 for the shared
+          quest, streak multiplier x1.0–x2.0, away bonus up to +20. Plant grows at 0/100/400/1000/2500 XP and droops
+          after 3 days away. Progress in `localStorage` under `tgq`, service worker caches the app for offline use after
+          first load.
+        </div>
+        <div class="body-text"><strong>What I learned:</strong> Small on-device models need guardrails — the quest
+          writer drifts off-topic so its output is validated with a target-mention check and falls back to templates.
+          Framing matters a lot for CLIP: same tree too far or too close flips the result. Honor-system limits are real
+          too — you can still photograph a screen, and real anti-cheat would need a server.</div>
+        <div class="body-text"><strong>Next:</strong> Better framing hints before the snap, per-quest confidence tuning,
+          and a shareable Grass Dex card.</div>
+      </div>
+    </div>
+
+    <div id="project-gallery">
+      <div class="subheader-text">Features</div>
+      <div class="project-gallery-content">
+        <div class="gallery-image-container">
+          <div class="gallery-image-wrapper phone">
+            <img src="../../assets/images/touch-grass/quest.png" class="gallery-image light-image"
+              alt="Active quest light">
+            <img src="../../assets/images/touch-grass/quest.png" class="gallery-image dark-image"
+              alt="Active quest dark">
+          </div>
+          <span class="image-caption">Active quest Page — Daily pool plus the shared quest, live camera check-in, 3-minute
+            cooldown, streak multiplier and away bonus on every find.</span>
+        </div>
+        <div class="gallery-image-container">
+          <div class="gallery-image-wrapper phone">
+            <img src="../../assets/images/touch-grass/dex.png" class="gallery-image light-image" alt="Grass Dex light">
+            <img src="../../assets/images/touch-grass/dex.png" class="gallery-image dark-image" alt="Grass Dex dark">
+          </div>
+          <span class="image-caption">Grass Dex + plant — 36 stamps stay locked as "?" until found, and XP grows the
+            plant from Seedling to Blossoming tree.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="footer">
+    <div class="footer-icons">
+      <a class="icon-link" target="_blank" href="https://www.linkedin.com/in/albert-benedict-rustandi/"><img
+          src="../../assets/icons/linkedin.svg" class="footer-icon" /></a>
+      <a class="icon-link" target="_blank" href="https://www.instagram.com/albertbenedicttt/"><img
+          src="../../assets/icons/instagram.svg" class="footer-icon" /></a>
+      <a class="icon-link" target="_blank" href="https://x.com/albertbenedict_"><img src="../../assets/icons/x.svg"
+          class="footer-icon" /></a>
+      <a class="icon-link" href="mailto:albert.b.rustandi@icloud.com"><img src="../../assets/icons/mail.svg"
+          class="footer-icon" /></a>
+    </div>
+    <div class="footer-copyright">© 2026 | Albert Benedict</div>
+  </div>
+</body>
+
+</html>
